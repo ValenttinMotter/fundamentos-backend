@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "./prisma.service";
 import { Prisma } from "@prisma/client";
+import { PrismaService } from "src/prisma.service";
 
 @Injectable()
 export class ModelsRepository {
@@ -14,8 +14,20 @@ export class ModelsRepository {
     return await this.prisma.model.findUnique({
       where: {
         id,
-      }
+      },
     });
+  }
+
+  async findByName(
+    name: string
+  ): Promise<Prisma.ModelUncheckedCreateInput | null> {
+    const model = this.prisma.model.findUnique({
+      where: {
+        name,
+      },
+    });
+
+    return model;
   }
 
   async save(data: Prisma.ModelUncheckedUpdateInput): Promise<void> {
@@ -39,7 +51,7 @@ export class ModelsRepository {
     await this.prisma.model.delete({
       where: {
         id: model.id?.toString(),
-      }
+      },
     });
   }
 }

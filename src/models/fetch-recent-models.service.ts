@@ -10,7 +10,7 @@ export interface Model {
 
 type FetchRecentModelsServiceResponse = {
   models: Model[];
-}
+};
 
 @Injectable()
 export class FetchRecentModelsService {
@@ -35,7 +35,7 @@ export class FetchRecentModelsService {
     }
 
     return {
-      models: newModels
+      models: newModels,
     };
   }
 }

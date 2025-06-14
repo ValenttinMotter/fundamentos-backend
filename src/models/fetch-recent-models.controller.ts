@@ -1,7 +1,7 @@
 import { Controller, Get } from "@nestjs/common";
 import { FetchRecentModelsService } from "./fetch-recent-models.service";
 
-@Controller('/models')
+@Controller("/models")
 export class FetchRecentModelsController {
   constructor(private fetchRecentModels: FetchRecentModelsService) {}
 
@@ -10,7 +10,7 @@ export class FetchRecentModelsController {
     const models = await this.fetchRecentModels.execute();
 
     return {
-      models
+      models,
     };
   }
 }
