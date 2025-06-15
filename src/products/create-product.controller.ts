@@ -12,7 +12,7 @@ const createProductBodySchema = z.object({
   isAvailable: z.boolean(),
   category: z.enum([Category.ELECTRONICS, Category.OTHER]),
   tags: z.array(z.string()),
-  modelId: z.string().uuid().optional(),
+  modelsIds: z.array(z.string()).optional(),
 });
 
 const bodyValidationPipe = new ZodValidationPipe(createProductBodySchema);
@@ -26,8 +26,16 @@ export class CreateProductController {
   @Post()
   @HttpCode(201)
   async handle(@Body(bodyValidationPipe) body: CreateProductBodySchema) {
-    const { name, description, price, inStock, isAvailable, category, tags } =
-      body;
+    const {
+      name,
+      description,
+      price,
+      inStock,
+      isAvailable,
+      category,
+      tags,
+      modelsIds,
+    } = body;
 
     await this.createProduct.execute({
       name,
@@ -37,6 +45,7 @@ export class CreateProductController {
       isAvailable,
       category,
       tags,
+      modelsIds,
     });
   }
 }

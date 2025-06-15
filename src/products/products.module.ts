@@ -13,6 +13,7 @@ import { GetProductByIdService } from "./get-product-by-id.service";
 import { UpdateAvailableProductController } from "./update-available-product.controller";
 import { UpdateAvailableProductService } from "./update-available-product.service";
 import { PrismaService } from "src/prisma.service";
+import { ModelsRepository } from "src/models/models.repository";
 
 @Module({
   controllers: [
@@ -32,6 +33,7 @@ import { PrismaService } from "src/prisma.service";
     DeleteProductService,
     EditProductService,
     PrismaService,
+    ModelsRepository,
   ],
 })
 export class ProductsModule {}
