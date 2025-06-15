@@ -26,16 +26,8 @@ export class CreateProductController {
   @Post()
   @HttpCode(201)
   async handle(@Body(bodyValidationPipe) body: CreateProductBodySchema) {
-    const {
-      name,
-      description,
-      price,
-      inStock,
-      isAvailable,
-      category,
-      tags,
-      modelsIds,
-    } = body;
+    const { name, description, price, inStock, isAvailable, category, tags } =
+      body;
 
     await this.createProduct.execute({
       name,
@@ -45,7 +37,6 @@ export class CreateProductController {
       isAvailable,
       category,
       tags,
-      modelsIds,
     });
   }
 }
