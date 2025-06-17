@@ -13,21 +13,21 @@ import { DeleteModelController } from "./delete-model.controller";
 import { CreateModelController } from "./create-model.controller";
 
 @Module({
-  controllers: [
-    CreateModelController,
-    DeleteModelController,
-    EditModelController,
-    FetchRecentModelsController,
-    GetModelByIdController,
-  ],
-  providers: [
-    PrismaService,
-    CreateModelService,
-    DeleteModelService,
-    EditModelService,
-    FetchRecentModelsService,
-    GetModelByIdService,
-    ModelsRepository,
-  ],
+	controllers: [
+		CreateModelController,
+		DeleteModelController,
+		EditModelController,
+		FetchRecentModelsController,
+		GetModelByIdController,
+	],
+	providers: [
+		PrismaService,
+		CreateModelService,
+		DeleteModelService,
+		EditModelService,
+		FetchRecentModelsService,
+		GetModelByIdService,
+		ModelsRepository,
+	],
 })
 export class ModelsModule {}

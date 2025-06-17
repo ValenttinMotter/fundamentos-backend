@@ -3,17 +3,17 @@ import { GetUserOrdersService } from "./get-user-orders.service";
 
 @Controller("/users/:userId/orders")
 export class GetUserOrdersController {
-  constructor(private getUserOrders: GetUserOrdersService) {}
+	constructor(private getUserOrders: GetUserOrdersService) {}
 
-  @Get()
-  @HttpCode(200)
-  async handle(@Param("userId") userId: string) {
-    const orders = await this.getUserOrders.execute({
-      userId,
-    });
+	@Get()
+	@HttpCode(200)
+	async handle(@Param("userId") userId: string) {
+		const orders = await this.getUserOrders.execute({
+			userId,
+		});
 
-    return {
-      orders,
-    };
-  }
+		return {
+			orders,
+		};
+	}
 }

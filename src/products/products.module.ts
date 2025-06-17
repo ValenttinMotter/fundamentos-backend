@@ -16,24 +16,24 @@ import { PrismaService } from "src/prisma.service";
 import { ModelsRepository } from "src/models/models.repository";
 
 @Module({
-  controllers: [
-    CreateProductController,
-    DeleteProductController,
-    EditProductController,
-    FetchRecentProductsController,
-    GetProductByIdController,
-    UpdateAvailableProductController,
-  ],
-  providers: [
-    UpdateAvailableProductService,
-    GetProductByIdService,
-    FetchRecentProductsService,
-    CreateProductService,
-    ProductsRepository,
-    DeleteProductService,
-    EditProductService,
-    PrismaService,
-    ModelsRepository,
-  ],
+	controllers: [
+		CreateProductController,
+		DeleteProductController,
+		EditProductController,
+		FetchRecentProductsController,
+		GetProductByIdController,
+		UpdateAvailableProductController,
+	],
+	providers: [
+		UpdateAvailableProductService,
+		GetProductByIdService,
+		FetchRecentProductsService,
+		CreateProductService,
+		ProductsRepository,
+		DeleteProductService,
+		EditProductService,
+		PrismaService,
+		ModelsRepository,
+	],
 })
 export class ProductsModule {}

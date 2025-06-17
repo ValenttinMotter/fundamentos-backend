@@ -4,7 +4,7 @@ import { z } from "zod";
 import { EditProfileService } from "./edit-profile.service";
 
 const editProfileBodySchema = z.object({
-  avatarUrl: z.string(),
+	avatarUrl: z.string(),
 });
 
 const bodyValidationPipe = new ZodValidationPipe(editProfileBodySchema);
@@ -13,19 +13,19 @@ type EditProfileBodySchema = z.infer<typeof editProfileBodySchema>;
 
 @Controller("/profiles/:id")
 export class EditProfileController {
-  constructor(private editProfile: EditProfileService) {}
+	constructor(private editProfile: EditProfileService) {}
 
-  @Put()
-  @HttpCode(204)
-  async handle(
-    @Body(bodyValidationPipe) body: EditProfileBodySchema,
-    @Param("id") id: string
-  ) {
-    const { avatarUrl } = body;
+	@Put()
+	@HttpCode(204)
+	async handle(
+		@Body(bodyValidationPipe) body: EditProfileBodySchema,
+		@Param("id") id: string,
+	) {
+		const { avatarUrl } = body;
 
-    await this.editProfile.execute({
-      avatarUrl,
-      id,
-    });
-  }
+		await this.editProfile.execute({
+			avatarUrl,
+			id,
+		});
+	}
 }

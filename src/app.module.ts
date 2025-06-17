@@ -6,12 +6,12 @@ import { ProfilesModule } from "./profiles/profiles.module";
 import { OrdersModule } from "./orders/orders.module";
 
 @Module({
-  imports: [
-    ProductsModule,
-    ModelsModule,
-    UsersModule,
-    ProfilesModule,
-    OrdersModule,
-  ],
+	imports: [
+		ProductsModule,
+		ModelsModule,
+		UsersModule,
+		ProfilesModule,
+		OrdersModule,
+	],
 })
 export class AppModule {}

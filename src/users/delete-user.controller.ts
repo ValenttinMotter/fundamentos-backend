@@ -3,13 +3,13 @@ import { DeleteUserService } from "./delete-user.service";
 
 @Controller("/users/:id")
 export class DeleteUserController {
-  constructor(private deleteUser: DeleteUserService) {}
+	constructor(private deleteUser: DeleteUserService) {}
 
-  @Delete()
-  @HttpCode(204)
-  async handle(@Param("id") id: string) {
-    await this.deleteUser.execute({
-      id,
-    });
-  }
+	@Delete()
+	@HttpCode(204)
+	async handle(@Param("id") id: string) {
+		await this.deleteUser.execute({
+			id,
+		});
+	}
 }

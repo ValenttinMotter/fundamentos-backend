@@ -3,39 +3,39 @@ import { ProfilesRepository } from "./profiles.repository";
 import { UsersRepository } from "src/users/user.repository";
 
 interface CreateProfileServiceRequest {
-  userId: string;
-  avatarUrl: string;
+	userId: string;
+	avatarUrl: string;
 }
 
 @Injectable()
 export class CreateProfileService {
-  constructor(
-    private profilesRepository: ProfilesRepository,
-    private usersRepository: UsersRepository
-  ) {}
+	constructor(
+		private profilesRepository: ProfilesRepository,
+		private usersRepository: UsersRepository,
+	) {}
 
-  async execute({
-    userId,
-    avatarUrl,
-  }: CreateProfileServiceRequest): Promise<void> {
-    const user = await this.usersRepository.findById(userId);
+	async execute({
+		userId,
+		avatarUrl,
+	}: CreateProfileServiceRequest): Promise<void> {
+		const user = await this.usersRepository.findById(userId);
 
-    if (!user) {
-      throw new HttpException("User not found.", HttpStatus.NOT_FOUND);
-    }
+		if (!user) {
+			throw new HttpException("User not found.", HttpStatus.NOT_FOUND);
+		}
 
-    if (user.profile) {
-      throw new HttpException(
-        "User already has a profile.",
-        HttpStatus.BAD_REQUEST
-      );
-    }
+		if (user.profile) {
+			throw new HttpException(
+				"User already has a profile.",
+				HttpStatus.BAD_REQUEST,
+			);
+		}
 
-    const profile = {
-      userId,
-      avatarUrl,
-    };
+		const profile = {
+			userId,
+			avatarUrl,
+		};
 
-    await this.profilesRepository.create(profile);
-  }
+		await this.profilesRepository.create(profile);
+	}
 }

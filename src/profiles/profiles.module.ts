@@ -10,18 +10,18 @@ import { EditProfileController } from "./edit-profile.controller";
 import { EditProfileService } from "./edit-profile.service";
 
 @Module({
-  controllers: [
-    CreateProfileController,
-    GetProfileByIdController,
-    EditProfileController,
-  ],
-  providers: [
-    CreateProfileService,
-    ProfilesRepository,
-    PrismaService,
-    UsersRepository,
-    GetProfileByIdService,
-    EditProfileService,
-  ],
+	controllers: [
+		CreateProfileController,
+		GetProfileByIdController,
+		EditProfileController,
+	],
+	providers: [
+		CreateProfileService,
+		ProfilesRepository,
+		PrismaService,
+		UsersRepository,
+		GetProfileByIdService,
+		EditProfileService,
+	],
 })
 export class ProfilesModule {}

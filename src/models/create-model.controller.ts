@@ -4,7 +4,7 @@ import { CreateModelService } from "./create-model.service";
 import { ZodValidationPipe } from "src/pipes/zod-validation-pipe";
 
 const createModelBodySchema = z.object({
-  name: z.string(),
+	name: z.string(),
 });
 
 const bodyValidationPipe = new ZodValidationPipe(createModelBodySchema);
@@ -13,15 +13,15 @@ type CreateModelBodySchema = z.infer<typeof createModelBodySchema>;
 
 @Controller("/models")
 export class CreateModelController {
-  constructor(private createModel: CreateModelService) {}
+	constructor(private createModel: CreateModelService) {}
 
-  @Post()
-  @HttpCode(201)
-  async handle(@Body(bodyValidationPipe) body: CreateModelBodySchema) {
-    const { name } = body;
+	@Post()
+	@HttpCode(201)
+	async handle(@Body(bodyValidationPipe) body: CreateModelBodySchema) {
+		const { name } = body;
 
-    await this.createModel.execute({
-      name,
-    });
-  }
+		await this.createModel.execute({
+			name,
+		});
+	}
 }

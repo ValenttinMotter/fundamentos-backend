@@ -2,27 +2,27 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { UsersRepository } from "./user.repository";
 
 interface CreateUserServiceRequest {
-  email: string;
+	email: string;
 }
 
 @Injectable()
 export class CreateUserService {
-  constructor(private usersRepository: UsersRepository) {}
+	constructor(private usersRepository: UsersRepository) {}
 
-  async execute({ email }: CreateUserServiceRequest): Promise<void> {
-    const userWithSameEmail = await this.usersRepository.findByEmail(email);
+	async execute({ email }: CreateUserServiceRequest): Promise<void> {
+		const userWithSameEmail = await this.usersRepository.findByEmail(email);
 
-    if (userWithSameEmail) {
-      throw new HttpException(
-        "User with this email already exists.",
-        HttpStatus.BAD_REQUEST
-      );
-    }
+		if (userWithSameEmail) {
+			throw new HttpException(
+				"User with this email already exists.",
+				HttpStatus.BAD_REQUEST,
+			);
+		}
 
-    const user = {
-      email,
-    };
+		const user = {
+			email,
+		};
 
-    await this.usersRepository.create(user);
-  }
+		await this.usersRepository.create(user);
+	}
 }

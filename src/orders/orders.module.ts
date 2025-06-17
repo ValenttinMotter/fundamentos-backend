@@ -11,20 +11,20 @@ import { GetUserOrdersController } from "./get-user-orders.controller";
 import { GetUserOrdersService } from "./get-user-orders.service";
 
 @Module({
-  controllers: [
-    CreateOrderController,
-    GetOrderByIdController,
-    GetUserOrdersController,
-  ],
-  providers: [
-    CreateOrderService,
-    GetOrderByIdService,
-    GetUserOrdersService,
-    ProductsRepository,
-    UsersRepository,
-    OrdersRepository,
-    UsersRepository,
-    PrismaService,
-  ],
+	controllers: [
+		CreateOrderController,
+		GetOrderByIdController,
+		GetUserOrdersController,
+	],
+	providers: [
+		CreateOrderService,
+		GetOrderByIdService,
+		GetUserOrdersService,
+		ProductsRepository,
+		UsersRepository,
+		OrdersRepository,
+		UsersRepository,
+		PrismaService,
+	],
 })
 export class OrdersModule {}

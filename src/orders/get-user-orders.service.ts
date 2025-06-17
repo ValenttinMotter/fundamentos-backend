@@ -4,57 +4,57 @@ import { OrderItem } from "@prisma/client";
 import { UsersRepository } from "src/users/user.repository";
 
 export interface Order {
-  id: string;
-  userId: string;
-  total: number;
-  orderItems: OrderItem[];
-  createdAt: string | Date | undefined;
-  updatedAt: string | Date | null | undefined;
+	id: string;
+	userId: string;
+	total: number;
+	orderItems: OrderItem[];
+	createdAt: string | Date | undefined;
+	updatedAt: string | Date | null | undefined;
 }
 
 interface GetUserOrdersServiceRequest {
-  userId: string;
+	userId: string;
 }
 
 type GetUserOrdersServiceResponse = {
-  orders: Order[];
+	orders: Order[];
 };
 
 @Injectable()
 export class GetUserOrdersService {
-  constructor(
-    private ordersRepository: OrdersRepository,
-    private usersRepository: UsersRepository
-  ) {}
+	constructor(
+		private ordersRepository: OrdersRepository,
+		private usersRepository: UsersRepository,
+	) {}
 
-  async execute({
-    userId,
-  }: GetUserOrdersServiceRequest): Promise<GetUserOrdersServiceResponse> {
-    const user = await this.usersRepository.findById(userId);
+	async execute({
+		userId,
+	}: GetUserOrdersServiceRequest): Promise<GetUserOrdersServiceResponse> {
+		const user = await this.usersRepository.findById(userId);
 
-    if (!user) {
-      throw new HttpException("User not found.", HttpStatus.NOT_FOUND);
-    }
+		if (!user) {
+			throw new HttpException("User not found.", HttpStatus.NOT_FOUND);
+		}
 
-    const orders = await this.ordersRepository.findByUserId(userId);
+		const orders = await this.ordersRepository.findByUserId(userId);
 
-    const ordersToReturn: Order[] = [];
+		const ordersToReturn: Order[] = [];
 
-    if (orders) {
-      for (const order of orders) {
-        ordersToReturn.push({
-          id: order.id?.toString() || "",
-          userId: order.userId,
-          total: order.total,
-          orderItems: order.orderItems,
-          createdAt: order.createdAt,
-          updatedAt: order.updatedAt,
-        });
-      }
-    }
+		if (orders) {
+			for (const order of orders) {
+				ordersToReturn.push({
+					id: order.id?.toString() || "",
+					userId: order.userId,
+					total: order.total,
+					orderItems: order.orderItems,
+					createdAt: order.createdAt,
+					updatedAt: order.updatedAt,
+				});
+			}
+		}
 
-    return {
-      orders: ordersToReturn,
-    };
-  }
+		return {
+			orders: ordersToReturn,
+		};
+	}
 }

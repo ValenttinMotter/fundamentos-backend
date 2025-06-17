@@ -13,21 +13,21 @@ import { DeleteUserController } from "./delete-user.controller";
 import { DeleteUserService } from "./delete-user.service";
 
 @Module({
-  controllers: [
-    CreateUserController,
-    FetchUsersController,
-    GetUserByIdController,
-    EditUserController,
-    DeleteUserController,
-  ],
-  providers: [
-    CreateUserService,
-    PrismaService,
-    UsersRepository,
-    FetchUsersService,
-    GetUserByIdService,
-    EditUserService,
-    DeleteUserService,
-  ],
+	controllers: [
+		CreateUserController,
+		FetchUsersController,
+		GetUserByIdController,
+		EditUserController,
+		DeleteUserController,
+	],
+	providers: [
+		CreateUserService,
+		PrismaService,
+		UsersRepository,
+		FetchUsersService,
+		GetUserByIdService,
+		EditUserService,
+		DeleteUserService,
+	],
 })
 export class UsersModule {}
